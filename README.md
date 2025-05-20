@@ -1,8 +1,7 @@
 ## 🤖 NutriBot – Chatbot Nutricional com IA no Telegram
-Este projeto é um chatbot nutricional automatizado desenvolvido com o n8n, que utiliza o Telegram para interação com o usuário e a OpenAI (GPT-4o-mini) para fornecer respostas inteligentes e personalizadas sobre alimentos e nutrição.
 ---
 ## 📌 Visão Geral
-O NutriBot é um assistente virtual para responder dúvidas nutricionais com base em alimentos informados pelo usuário. Ele retorna as informações nutricionais de 100g do alimento citado, com destaque para:
+O NutriBot é um assistente virtual automatizado e desenvolvido com o n8n, que utiliza o Telegram para responder dúvidas nutricionais com base em alimentos informados pelo usuário. Ele retorna as informações nutricionais de 100g do alimento citado, com destaque para:
 
 - Calorias
 
@@ -72,7 +71,7 @@ Após configurar tudo, ative a automação e teste enviando mensagens ao seu bot
 ## 📸 Interface
 Veja como o fluxo foi construído no n8n:
 
-![Fluxo NutriBot](./fluxo-nutribot.png)
+![Fluxo NutriBot](./fluxo-nutribot.)
 ---
 
 ## 📚 Requisitos
