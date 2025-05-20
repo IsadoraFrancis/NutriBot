@@ -68,11 +68,6 @@ git clone https://github.com/seu-usuario/NutriBot-n8n.git
 Após configurar tudo, ative a automação e teste enviando mensagens ao seu bot no Telegram.
 
 ---
-## 📸 Interface
-Veja como o fluxo foi construído no n8n:
-
-![Fluxo NutriBot]([https://github.com/seu-usuario/seu-repo/blob/main/fluxo-nutribot.png?raw=true](https://github.com/IsadoraFrancis/NutriBot/blob/main/fluxo-nutribot.png)
----
 
 ## 📚 Requisitos
 - Conta no Telegram
