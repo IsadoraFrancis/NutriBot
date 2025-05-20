@@ -71,7 +71,7 @@ Após configurar tudo, ative a automação e teste enviando mensagens ao seu bot
 ## 📸 Interface
 Veja como o fluxo foi construído no n8n:
 
-![Fluxo NutriBot](./fluxo-nutribot.)
+![Fluxo NutriBot](./fluxo-nutribot.png)
 ---
 
 ## 📚 Requisitos
