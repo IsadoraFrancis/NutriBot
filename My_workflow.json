@@ -1,0 +1,140 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "updates": [
+          "message"
+        ],
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "71bb439e-88c8-4d52-806d-8aca1be0519f",
+      "name": "NutriBot",
+      "webhookId": "2f552f32-4a35-42e6-8568-7f3d58b589e3",
+      "credentials": {
+        "telegramApi": {
+          "id": "HQIi4TrU6NOpVLp3",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.message.text }}",
+        "options": {
+          "systemMessage": "Você é um nutricionista virtual. Quando o usuário informar um alimento, responda com dados nutricionais de 100g desse alimento. Seja claro, direto, e inclua calorias, proteínas, gorduras, carboidratos, vitaminas, minerais se é indicado pra diabéticos e hipertensos e qual a melhor forma de comer esse alimento para pessoas que possuem essas doenças. Se o alimento não for encontrado, peça para ele escrever de outro jeito."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.9,
+      "position": [
+        440,
+        0
+      ],
+      "id": "2e6592ea-aec1-4db1-862a-c68a9e38c16f",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        360,
+        200
+      ],
+      "id": "0d136444-2845-4354-b577-70d1266342a7",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "KsePGjEvsD2kTM69",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('NutriBot').item.json.message.chat.id }}",
+        "text": "={{ $json.output }}",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        800,
+        0
+      ],
+      "id": "6378d407-6c3f-4261-a6a9-135d16987fdf",
+      "name": "Telegram",
+      "webhookId": "feb958a8-edaa-46d5-b06f-f4b6fa5fc8f8",
+      "credentials": {
+        "telegramApi": {
+          "id": "HQIi4TrU6NOpVLp3",
+          "name": "Telegram account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "NutriBot": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Telegram",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "179d189a-5467-465e-bced-8343fa49a9d5",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "8b0a8f9ae34933f6b6a79abe1524bbdf5a504f8df7bcfbd3f19ce589ed2111b2"
+  },
+  "id": "cKK90lB18gVpwST8",
+  "tags": []
+}
